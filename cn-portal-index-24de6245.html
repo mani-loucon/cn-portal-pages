@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万博体育 · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            background: linear-gradient(145deg, #fce7d6 0%, #f3d5b5 40%, #edd1b0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+            color: #3d2e24;
+        }
+
+        .page-wrapper {
+            max-width: 1180px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 主卡片容器 */
+        .knowledge-card {
+            background: #fffdf9;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px -12px rgba(100, 60, 30, 0.25), 0 8px 16px -6px rgba(80, 45, 20, 0.08);
+            padding: 2.8rem 2.5rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        @media (max-width: 600px) {
+            .knowledge-card {
+                padding: 2rem 1.2rem;
+                border-radius: 28px;
+            }
+        }
+
+        /* Hero 区 —— 小标题 + 收藏提示 */
+        .hero-zone {
+            margin-bottom: 2.4rem;
+            border-bottom: 1px solid #efe3d6;
+            padding-bottom: 1.6rem;
+        }
+
+        .hero-zone .tagline {
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #a58064;
+            background: #f6ece3;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-zone h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #35271f;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero-zone .subhead {
+            font-size: 1.1rem;
+            color: #6c5542;
+            max-width: 80%;
+        }
+
+        @media (max-width: 640px) {
+            .hero-zone h1 {
+                font-size: 1.9rem;
+            }
+            .hero-zone .subhead {
+                max-width: 100%;
+                font-size: 1rem;
+            }
+        }
+
+        /* 目录感布局：网格卡片区 */
+        .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 2.8rem 0 2rem;
+        }
+
+        .dir-item {
+            background: #f9f4ee;
+            border-radius: 24px;
+            padding: 1.6rem 1.4rem 1.4rem;
+            transition: background 0.15s ease, transform 0.1s ease;
+            border: 1px solid #ede1d4;
+        }
+
+        .dir-item:hover {
+            background: #f5ede5;
+            transform: translateY(-3px);
+        }
+
+        .dir-item .dir-icon {
+            font-size: 1.7rem;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .dir-item h3 {
+            font-size: 1.2rem;
+            font-weight: 540;
+            color: #3d2b1e;
+            margin-bottom: 0.4rem;
+        }
+
+        .dir-item p {
+            font-size: 0.95rem;
+            color: #5f4b38;
+            line-height: 1.5;
+        }
+
+        .dir-item .dir-link {
+            display: inline-block;
+            margin-top: 0.8rem;
+            font-weight: 500;
+            color: #794f31;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .dir-item .dir-link:hover {
+            border-bottom-color: #b4835c;
+        }
+
+        /* 说明区 / 提示区 组合 */
+        .info-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2.2rem 0 1.8rem;
+        }
+
+        .note-box {
+            flex: 1 1 240px;
+            background: #fbf5ee;
+            border-radius: 28px;
+            padding: 1.5rem 1.8rem;
+            border-left: 6px solid #dbb594;
+        }
+
+        .note-box h4 {
+            font-size: 1.1rem;
+            font-weight: 530;
+            color: #3f2d1f;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .note-box p {
+            color: #4f3c2b;
+            font-size: 0.95rem;
+        }
+
+        .note-box code {
+            background: #e6d6c6;
+            padding: 0.1rem 0.5rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #4f341f;
+        }
+
+        /* 相关信息区 —— 精简 FAQ 摘要 */
+        .related-section {
+            margin: 2.6rem 0 1.4rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #e7d9cb;
+        }
+
+        .related-section h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #463428;
+            margin-bottom: 1.4rem;
+            letter-spacing: -0.3px;
+        }
+
+        .faq-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: #f8f1e9;
+            border-radius: 20px;
+            padding: 1.1rem 1.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+
+        .faq-item .question {
+            font-weight: 500;
+            color: #3a2b1e;
+            flex: 1 1 180px;
+        }
+
+        .faq-item .answer {
+            color: #5d4a36;
+            font-size: 0.95rem;
+            flex: 2 1 220px;
+            margin-top: 0.2rem;
+        }
+
+        .faq-item .answer a {
+            color: #784f2e;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #c9aa89;
+            font-weight: 500;
+        }
+
+        .faq-item .answer a:hover {
+            color: #4f2f1b;
+            text-decoration-color: #784f2e;
+        }
+
+        /* 脚注 / 再次访问提示 */
+        .footnote-reminder {
+            margin-top: 2.2rem;
+            padding: 1.2rem 1.8rem;
+            background: #efe4d8;
+            border-radius: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .footnote-reminder .reminder-text {
+            font-size: 0.98rem;
+            color: #3a2a1d;
+        }
+
+        .footnote-reminder .reminder-text strong {
+            font-weight: 550;
+        }
+
+        .bookmark-badge {
+            background: #dcc6b0;
+            color: #35241a;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 2.2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #856a53;
+            opacity: 0.75;
+        }
+
+        /* 圆角按钮感链接 (通用) */
+        .btn-link {
+            display: inline-block;
+            background: #e6d3c0;
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            color: #3d2b1b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background 0.15s, box-shadow 0.1s;
+            box-shadow: 0 2px 4px rgba(110, 70, 40, 0.05);
+        }
+
+        .btn-link:hover {
+            background: #dabd9f;
+            box-shadow: 0 4px 8px rgba(110, 70, 40, 0.12);
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 480px) {
+            .faq-item {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .footnote-reminder {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="knowledge-card">
+
+        <!-- Hero：再次访问 / 收藏基调 -->
+        <div class="hero-zone">
+            <span class="tagline">✦ 常回来看看</span>
+            <h1>万博体育 · 知识集散地</h1>
+            <div class="subhead">一个为了回访与持续关注而准备的页面，不追赶，不喧哗，只把信息收拢整齐。</div>
+        </div>
+
+        <!-- 目录感布局：四个核心模块 -->
+        <div class="directory-grid">
+            <div class="dir-item">
+                <span class="dir-icon">📋</span>
+                <h3>平台概述</h3>
+                <p>体育赛事、实时数据、社区氛围——万博体育所聚焦的领域，也是许多爱好者日常关注的内容。</p>
+                <a class="dir-link" href="https://cn-portal-wanbo.com" style="border-bottom: none; background: transparent; padding:0;">万博体育</a>
+            </div>
+            <div class="dir-item">
+                <span class="dir-icon">🔖</span>
+                <h3>收藏与回访</h3>
+                <p>如果你曾在这里找到有价值的信息，不妨把页面加入书签。下次再来时，一切都还在。</p>
+                <span class="btn-link" style="cursor: default; opacity:0.8;">⌘ + D</span>
+            </div>
+            <div class="dir-item">
+                <span class="dir-icon">📌</span>
+                <h3>持续关注</h3>
+                <p>结构化的内容会逐渐补充，保持适度的更新节奏。你可以隔一段时间再回来看看。</p>
+                <span class="btn-link" style="cursor: default; opacity:0.8;">RSS 式节奏</span>
+            </div>
+            <div class="dir-item">
+                <span class="dir-icon">🧭</span>
+                <h3>相关方向</h3>
+                <p>赛事分析、规则浅析、动态摘要……这些日后都会慢慢收纳进对应的分区。</p>
+                <span class="btn-link" style="cursor: default; opacity:0.7;">筹备中</span>
+            </div>
+        </div>
+
+        <!-- 说明区 + 提示区 并排 -->
+        <div class="info-panel">
+            <div class="note-box">
+                <h4><span>📎</span> 关于这个页面</h4>
+                <p>它并不是一个门户入口，更像一个安静的阅读起点。所有内容围绕<a href="https://cn-portal-wanbo.com" style="color:#784f2e; text-decoration: underline; text-underline-offset:3px;">万博体育</a>相关的信息习惯展开，不主动推送，不制造紧迫感。适合那些喜欢自己掌握节奏的人。</p>
+            </div>
+            <div class="note-box" style="border-left-color: #cbaa88;">
+                <h4><span>💡</span> 提示 · 关于访问</h4>
+                <p>如果你希望以后能更自然地再次来到这里，可以现在把链接保存到收藏夹。页面结构会保持稳定，但内容会缓慢迭代。记得偶尔回来看看是否有更新。</p>
+            </div>
+        </div>
+
+        <!-- 相关信息区 / FAQ 摘要 -->
+        <div class="related-section">
+            <h2>一些你可能想了解的事情</h2>
+            <div class="faq-mini">
+                <div class="faq-item">
+                    <span class="question">这里是什么类型的页面？</span>
+                    <span class="answer">一个轻量的知识库入口，围绕 <a href="https://cn-portal-wanbo.com">万博体育</a> 整理出介绍、提示与相关方向。没有复杂的功能，只有文字和链接。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="question">为什么强调「再次访问」？</span>
+                    <span class="answer">因为很多好的信息源需要时间来沉淀，收藏和回访是一种温和的参与方式。页面设计也偏向于让人愿意存下来。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="question">内容会频繁变化吗？</span>
+                    <span class="answer">不会。结构保持稳定，只会在合适的时机补充或调整部分叙述。你不需要时刻刷新。</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 再次访问 / 收藏 强调区 -->
+        <div class="footnote-reminder">
+            <div class="reminder-text">
+                <strong>📌 把这里加入书签</strong> — 下次回来不需要搜索，不需要回忆。它就在那里。
+            </div>
+            <div class="bookmark-badge">
+                ⭐ 收藏备用
+            </div>
+        </div>
+
+        <!-- 一句自然嵌入的链接句子（已在前文使用，但再补一个自然句） -->
+        <p style="margin-top: 2rem; color: #5f4936; font-size: 0.9rem; text-align: center; max-width: 80%; margin-left: auto; margin-right: auto;">
+            ／ 若你偶然读到这些文字，且对体育信息感兴趣，或许<a href="https://cn-portal-wanbo.com" style="color:#784f2e; text-decoration: underline; text-underline-offset:3px;">万博体育</a>是一个你愿意保留在收藏夹里的名字。／
+        </p>
+
+        <div class="footer-note">
+            <span>— 知识库入口 · 安静存在 —</span>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
