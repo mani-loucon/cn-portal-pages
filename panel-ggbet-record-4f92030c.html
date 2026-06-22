@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料索引 · ggbet 信息整理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #faf9f7;
+            color: #1e1e1e;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            padding: 2rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 740px;
+            width: 100%;
+        }
+
+        /* hero 横幅 — 杂志题头风格 */
+        .hero {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .hero__label {
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #8a8a8a;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero__title {
+            font-size: 2.4rem;
+            font-weight: 540;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: #121212;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero__sub {
+            font-size: 1rem;
+            color: #5a5a5a;
+            max-width: 620px;
+            border-left: 3px solid #c6c6c6;
+            padding-left: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        /* 介绍卡片 */
+        .intro-block {
+            background: #ffffff;
+            padding: 2rem 1.8rem;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 1px 6px rgba(0,0,0,0.03);
+            margin-bottom: 2.8rem;
+        }
+
+        .intro-block p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #2c2c2c;
+            letter-spacing: 0.01em;
+        }
+
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-head {
+            font-size: 1.25rem;
+            font-weight: 520;
+            letter-spacing: -0.01em;
+            margin: 2.4rem 0 1rem 0;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #eae8e5;
+            color: #1a1a1a;
+        }
+
+        .section-head:first-of-type {
+            margin-top: 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+            margin: 1.4rem 0 1.8rem 0;
+        }
+
+        .feature-item {
+            background: #f6f5f3;
+            padding: 1.2rem 1rem;
+            border-radius: 2px;
+        }
+
+        .feature-item__num {
+            font-size: 0.7rem;
+            color: #9a9a9a;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1rem;
+            font-weight: 520;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #4a4a4a;
+            line-height: 1.5;
+        }
+
+        .faq-mini {
+            margin: 2rem 0 1.6rem 0;
+            background: #f8f7f5;
+            padding: 1.6rem 1.6rem 1.8rem;
+            border-radius: 2px;
+        }
+
+        .faq-mini dt {
+            font-weight: 520;
+            font-size: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-mini dt:first-child {
+            margin-top: 0;
+        }
+
+        .faq-mini dd {
+            font-size: 0.92rem;
+            color: #4a4a4a;
+            margin-left: 0;
+            padding-left: 0.5rem;
+            border-left: 2px solid #d6d4d0;
+        }
+
+        .outro {
+            margin-top: 2.8rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid #ddd;
+            font-size: 0.95rem;
+            color: #5f5f5f;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.6rem;
+        }
+
+        .outro a {
+            color: #1e1e1e;
+            text-decoration: none;
+            border-bottom: 1px solid #c0bdb8;
+            transition: border-color 0.15s;
+        }
+
+        .outro a:hover {
+            border-bottom-color: #1e1e1e;
+        }
+
+        .footnote {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #a8a8a8;
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 520px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .hero__title {
+                font-size: 1.8rem;
+            }
+            .intro-block {
+                padding: 1.4rem 1rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .faq-mini {
+                padding: 1.2rem;
+            }
+            .outro {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 杂志横幅 -->
+    <header class="hero">
+        <div class="hero__label">资料索引 · 信息整理</div>
+        <h1 class="hero__title">ggbet · 面板与数据</h1>
+        <div class="hero__sub">一份关于平台结构与功能模块的简要档案</div>
+    </header>
+
+    <!-- 背景说明 + 三段自然介绍 -->
+    <div class="intro-block">
+        <p>
+            <strong>ggbet</strong> 作为综合性在线面板系统，其核心价值体现在对多类资源与入口的集中管理。
+            从后台权限分配到前台数据呈现，平台力求降低信息冗余，让操作者更专注于关键决策环节。
+            以下从资料整理的视角，梳理其基本构成、适用场景以及常见疑问。
+        </p>
+    </div>
+
+    <h2 class="section-head">结构概览</h2>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <div class="feature-item__num">01</div>
+            <h3>模块化面板</h3>
+            <p>采用卡片式布局，将账户管理、数据概览、日志记录分置独立区域，便于快速定位。</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-item__num">02</div>
+            <h3>权限分级</h3>
+            <p>支持多层级访问控制，不同角色所见的界面与可操作范围均有明确区隔，提升安全性。</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-item__num">03</div>
+            <h3>检索与归档</h3>
+            <p>内置简易筛选与导出功能，可针对历史记录进行条件查询，生成结构化文本用于存档。</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-item__num">04</div>
+            <h3>响应适配</h3>
+            <p>界面针对桌面与移动设备分别优化，在窄屏下仍保持核心操作的可达性。</p>
+        </div>
+    </div>
+
+    <h2 class="section-head">信息索引场景</h2>
+    <div class="intro-block">
+        <p>
+            在实际使用中，操作者通常需要借助面板完成以下三类工作：<br>
+            <strong>· 状态监控</strong> —— 查看账户下的实时摘要与变动记录；<br>
+            <strong>· 配置调整</strong> —— 修改基础参数、通知偏好或界面显示方式；<br>
+            <strong>· 资料归档</strong> —— 将特定时间段内的记录导出为本地备份，以供后续复查。
+        </p>
+        <p>
+            上述流程均围绕 <a href="https://panel-ggbet.com" style="color:#1e1e1e; text-decoration: none; border-bottom: 1px solid #bbb;">ggbet</a> 的管理逻辑展开，各部分之间存在清晰的数据关联。
+            对于初次接触该面板的用户，建议先熟悉左侧导航的层级关系，再逐步深入具体模块。
+        </p>
+    </div>
+
+    <h2 class="section-head">FAQ 摘要</h2>
+    <dl class="faq-mini">
+        <dt>如何快速定位某项功能？</dt>
+        <dd>面板顶部设有搜索栏，支持按模块名称或关键词检索，同时可用快捷键（Ctrl+K）直接唤起。</dd>
+        <dt>数据导出支持哪些格式？</dt>
+        <dd>目前提供 CSV 与 JSON 两种格式，导出前可选择时间范围与所需字段。</dd>
+        <dt>面板的语言选项有哪些？</dt>
+        <dd>系统内置英语、中文（简体）及西班牙语界面，语言切换后参数配置不受影响。</dd>
+        <dt>历史记录保留多长时间？</dt>
+        <dd>默认保留最近 90 天的操作日志，更早的记录可通过归档功能下载至本地保存。</dd>
+    </dl>
+
+    <!-- 页尾访问提示 -->
+    <div class="outro">
+        <span>进一步了解面板结构与资料索引，可查阅 <a href="https://panel-ggbet.com">ggbet</a> 的相关说明。</span>
+        <span>信息更新于当前版本。</span>
+    </div>
+
+    <div class="footnote">
+        · 资料整理 · 仅供信息参考 ·
+    </div>
+</div>
+</body>
+</html>
